@@ -36,6 +36,7 @@ export default function GereScreen() {
               <div className="card-actions justify-end"></div>
 
               <IndexValue />
+              <Globale />
             </div>
           </div>
           <div className="  m-5 card lg:card-side bg-base-100 shadow-xl">
@@ -59,11 +60,6 @@ export default function GereScreen() {
                 Démarer
               </button>
             </div>
-          </div>
-        </div>{" "}
-        <div className="w-1/2  card bg-base-100 shadow-xl">
-          <div className="card-body ">
-            <Globale />
           </div>
         </div>{" "}
       </div>

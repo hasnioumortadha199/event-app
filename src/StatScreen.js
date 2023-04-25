@@ -6,7 +6,7 @@ export default function StatScreen() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const q = query(collection(db, "users"), orderBy("note", "desc"));
+    const q = query(collection(db, "users"), orderBy("notePreTest", "desc"));
 
     getDocs(q)
       .then((querySnapshot) => {
@@ -26,7 +26,7 @@ export default function StatScreen() {
       <div className="  p-6">
         <h1 className="text-2xl font-bold mb-4 uppercase text-center  ">
           {" "}
-          Classment
+          Classement
         </h1>
       </div>
       <div className=" container mx-auto px-4 overflow-x-auto">
@@ -46,7 +46,7 @@ export default function StatScreen() {
               <tr>
                 <th>{index + 1}</th>
                 <td>{user.username}</td>
-                <td>{user.note} / 30 </td>
+                <td>{user.notePreTest} / 48 </td>
                 <td>{user.email} </td>
               </tr>
             ))}

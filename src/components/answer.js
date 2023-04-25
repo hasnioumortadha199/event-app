@@ -41,7 +41,7 @@ export default function Answer({ item }) {
             <p>
               {}
               {globalData.isPreTest && globalData.index === item.index ? (
-                <h2>{v}</h2>
+                <h2 className="text-green-500">{v}</h2>
               ) : null}
             </p>
           </h1>

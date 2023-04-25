@@ -46,23 +46,28 @@ export default function StatComp() {
     });
   }, [globalData]);
 
-  const pourCentage = () => {};
   return (
     <div>
       <div>
-        {" "}
-        <div
-          className="radial-progress"
-          style={{
-            "--value": { sum },
-            "--size": "12rem",
-            "--thickness": "2px",
-          }}
-        >
-          {sum}%
-        </div>
+        {globalData.isPreTest ? (
+          <h2>
+            {" "}
+            <div>
+              {" "}
+              <div
+                className="radial-progress"
+                style={{
+                  "--value": `${sum}`,
+                  "--size": "12rem",
+                  "--thickness": "2px",
+                }}
+              >
+                {sum}%
+              </div>
+            </div>{" "}
+          </h2>
+        ) : null}
       </div>
-      <div>{globalData.isPreTest ? <h2> {sum}% </h2> : null}</div>
     </div>
   );
 }

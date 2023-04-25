@@ -76,10 +76,24 @@ export const IndexValue = () => {
               <h2>
                 {item.question}
                 <h3>
-                  {item.answers.map((i) => (
-                    <ul class="list-disc">
-                      <li> {i}</li>
-                    </ul>
+                  {item.answers.map((i, idx) => (
+                    <p
+                      className={`${
+                        globalData.isPreTest === true
+                          ? "text-dark"
+                          : item.rightAnswer.some((e) => {
+                              if (e === idx) {
+                                console.log("mmmmmm", idx, e === idx);
+                                return true;
+                              }
+                              return false;
+                            }) === true
+                          ? "text-green-500"
+                          : "text-red-600"
+                      }`}
+                    >
+                      {i}
+                    </p>
                   ))}{" "}
                 </h3>
               </h2>
@@ -92,4 +106,13 @@ export const IndexValue = () => {
       </button>
     </div>
   );
+};
+const contains = (List, indx) => {
+  List.some((e) => {
+    if (e === indx) {
+      console.log("mmmmmm", indx, e === indx);
+      return true;
+    }
+    return false;
+  });
 };
