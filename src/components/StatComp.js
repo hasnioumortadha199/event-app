@@ -62,7 +62,7 @@ export default function StatComp() {
           {sum}%
         </div>
       </div>
-      <div>{globalData.isPreTest ? <h2> {sum} </h2> : null}</div>
+      <div>{globalData.isPreTest ? <h2> {sum}% </h2> : null}</div>
     </div>
   );
 }
