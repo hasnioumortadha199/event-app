@@ -1,0 +1,9 @@
+import React from "react";
+
+export default function Znswer({ answers, rightAnswerIndex }) {
+  return (
+    <div>
+      <div>{answers[rightAnswerIndex]}</div>
+    </div>
+  );
+}
