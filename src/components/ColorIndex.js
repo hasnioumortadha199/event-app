@@ -11,7 +11,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 
-export const IndexValue = () => {
+export const ColorIndex = () => {
   const [myCollectionData, setMyCollectionData] = useState([]);
   const [globalData, setGlobalData] = useState(0);
 
@@ -49,8 +49,8 @@ export const IndexValue = () => {
   const handleIncrement = async () => {
     try {
       const docRef = doc(db, "globalData", "admin-control");
-      await updateDoc(docRef, { index: increment(1), isPreTest: false });
-      console.log("Document updated successfully.");
+      await updateDoc(docRef, { index: increment(1) });
+      handleChangetwo();
       const updatedDocSnap = await getDoc(docRef);
       if (updatedDocSnap.exists()) {
         setGlobalData(updatedDocSnap.data());
@@ -76,11 +76,11 @@ export const IndexValue = () => {
   }, []);
 
   return (
-    <div className="p-2">
-      <h1 className="card-title text-5xl   ">
+    <div className="p-1">
+      <h1 className="card-title text-4xl ">
         Question N ° :{" "}
         {globalData ? (
-          <h2 className="card-title text-5xl">{globalData.index + 1}</h2>
+          <h2 className=" text-4xl">{globalData.index + 1}</h2>
         ) : null}
       </h1>
 
@@ -88,16 +88,29 @@ export const IndexValue = () => {
         <div key={item.id}>
           <p>
             {globalData.index === item.index ? (
-              <div>
-                <h2 className="mt-2 text-2xl">{item.question} </h2>
-                <h3 h2 className="mt-2 text-2xl">
+              <h5 className="  text-2xl  ">
+                {item.question}
+                <h3>
                   <ul className="list-decimal">
                     {item.answers.map((i, idx) => (
-                      <li>{i}</li>
-                    ))}
+                      <li
+                        className={`   ${
+                          item.rightAnswer.some((e) => {
+                            if (e === idx) {
+                              return true;
+                            }
+                            return false;
+                          }) === true
+                            ? "text-green-500"
+                            : "text-red-600"
+                        }`}
+                      >
+                        {i}
+                      </li>
+                    ))}{" "}
                   </ul>
                 </h3>
-              </div>
+              </h5>
             ) : null}
           </p>
         </div>

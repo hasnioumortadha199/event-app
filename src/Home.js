@@ -14,8 +14,8 @@ export default function Home() {
     navigate("/stat");
   };
   return (
-    <div className="flex justify-center">
-      <div className="">
+    <div className=" flex justify-center">
+      <div className=" ">
         <div className=" card w-96 bg-base-100 shadow-xl m-3 p-3">
           <div className="card-body">
             <h2 className="card-title">Gérer la formation</h2>
