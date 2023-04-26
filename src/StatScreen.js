@@ -4,7 +4,29 @@ import { db } from "./firebase-config";
 
 export default function StatScreen() {
   const [users, setUsers] = useState([]);
+  const [nbr, setNbr] = useState(1);
+  const [globalData, setGlobalData] = useState({
+    index: 0,
+    time: true,
+    isPreTest: true,
+  });
 
+  const [sumNote, setSumNote] = useState(0);
+
+  const getGlobalStats = () => {
+    const userQuery = query(collection(db, "users"));
+    getDocs(userQuery).then((usersSnap) => {
+      let sum = usersSnap.docs.reduce((prtSum, user) => {
+        console.log(user.data().notePreTest);
+        if (user.data().notePreTest) {
+          return prtSum + user.data().notePreTest;
+        }
+        return prtSum;
+      }, 0);
+      console.log((sum * 100) / (48 * usersSnap.docs.length));
+      setSumNote((sum * 100) / (48 * usersSnap.docs.length));
+    });
+  };
   useEffect(() => {
     const q = query(collection(db, "users"), orderBy("notePreTest", "desc"));
 
@@ -24,6 +46,24 @@ export default function StatScreen() {
   return (
     <div>
       <div className="  p-6">
+        <button onClick={getGlobalStats} className="btn btn-outline btn-info">
+          Démarer
+        </button>
+        <div className="flex justify-center container mx-auto px-4 overflow-x-auto justify-center">
+          <div
+            className="justify-center radial-progress bg-green-700 text-primary-content border-4 border-green-700"
+            style={{ "--size": "28rem", "--value": `${sumNote}` }}
+          >
+            {sumNote} %
+          </div>
+
+          <div
+            className="m-5 radial-progress bg-red-700 text-primary-content border-4 border-red-700"
+            style={{ "--size": "28rem", "--value": `${100 - sumNote}` }}
+          >
+            {100 - sumNote} %
+          </div>
+        </div>
         <h1 className="text-2xl font-bold mb-4 uppercase text-center  ">
           {" "}
           Classement

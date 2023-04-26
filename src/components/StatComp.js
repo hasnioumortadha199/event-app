@@ -15,6 +15,7 @@ export default function StatComp() {
     isPreTest: true,
   });
   const [sum, setSum] = useState(0);
+  const [nbr, setNbr] = useState(1);
 
   useEffect(() => {
     const unsub = onSnapshot(doc(db, "globalData", "admin-control"), (doc) => {
@@ -42,6 +43,7 @@ export default function StatComp() {
           return partialSum;
         }
       }, 0);
+      setNbr(usersSnap.docs.length);
       setSum(lsum);
     });
   }, [globalData]);
@@ -57,12 +59,12 @@ export default function StatComp() {
               <div
                 className="radial-progress"
                 style={{
-                  "--value": `${sum}`,
-                  "--size": "12rem",
-                  "--thickness": "2px",
+                  "--value": `${(sum / nbr) * 100}`,
+                  "--size": "16rem",
+                  "--thickness": "8px",
                 }}
               >
-                {sum}%
+                {(sum / nbr) * 100} %
               </div>
             </div>{" "}
           </h2>
