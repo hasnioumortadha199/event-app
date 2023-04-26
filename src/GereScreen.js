@@ -9,7 +9,7 @@ import { ColorIndex } from "./components/ColorIndex";
 import { useNavigate } from "react-router-dom";
 
 export default function GereScreen() {
-  const [initialSeconds, setInitialSeconds] = useState(5);
+  const [initialSeconds, setInitialSeconds] = useState(15);
   const [remainingSeconds, setRemainingSeconds] = useState(initialSeconds);
   const intervalIdRef = useRef(null);
   const [globalData, setGlobalData] = useState(0);
@@ -56,6 +56,20 @@ export default function GereScreen() {
       console.error("Error incrementing index:", error);
     }
   };
+  const handleChangetimeoN = async () => {
+    try {
+      const docRef = doc(db, "globalData", "admin-control");
+      await updateDoc(docRef, { time: true });
+      const updatedDocSnap = await getDoc(docRef);
+      if (updatedDocSnap.exists()) {
+        setGlobalData(updatedDocSnap.data());
+      } else {
+        console.log("No such document!");
+      }
+    } catch (error) {
+      console.error("Error incrementing index:", error);
+    }
+  };
   useEffect(() => {
     intervalIdRef.current = setInterval(() => {
       setRemainingSeconds((prevSeconds) => prevSeconds - 1);
@@ -76,6 +90,7 @@ export default function GereScreen() {
   const handleRestart = () => {
     setRemainingSeconds(initialSeconds);
     setIsColor(false);
+    handleChangetimeoN();
   };
 
   const handleClass = () => {

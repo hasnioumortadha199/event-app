@@ -52,7 +52,6 @@ export const IndexValue = () => {
       await updateDoc(docRef, {
         index: increment(1),
         isPreTest: false,
-        time: true,
       });
       console.log("Document updated successfully.");
       const updatedDocSnap = await getDoc(docRef);
