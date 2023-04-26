@@ -49,7 +49,11 @@ export const IndexValue = () => {
   const handleIncrement = async () => {
     try {
       const docRef = doc(db, "globalData", "admin-control");
-      await updateDoc(docRef, { index: increment(1), isPreTest: false });
+      await updateDoc(docRef, {
+        index: increment(1),
+        isPreTest: false,
+        time: true,
+      });
       console.log("Document updated successfully.");
       const updatedDocSnap = await getDoc(docRef);
       if (updatedDocSnap.exists()) {

@@ -42,6 +42,20 @@ export default function GereScreen() {
       console.error("Error incrementing index:", error);
     }
   };
+  const handleChangetime = async () => {
+    try {
+      const docRef = doc(db, "globalData", "admin-control");
+      await updateDoc(docRef, { time: false });
+      const updatedDocSnap = await getDoc(docRef);
+      if (updatedDocSnap.exists()) {
+        setGlobalData(updatedDocSnap.data());
+      } else {
+        console.log("No such document!");
+      }
+    } catch (error) {
+      console.error("Error incrementing index:", error);
+    }
+  };
   useEffect(() => {
     intervalIdRef.current = setInterval(() => {
       setRemainingSeconds((prevSeconds) => prevSeconds - 1);
@@ -55,6 +69,7 @@ export default function GereScreen() {
       clearInterval(intervalIdRef.current);
       setIsColor(true);
       handleChangetwo();
+      handleChangetime();
     }
   }, [remainingSeconds]);
 
