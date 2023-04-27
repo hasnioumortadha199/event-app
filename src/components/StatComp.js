@@ -57,14 +57,17 @@ export default function StatComp() {
             <div>
               {" "}
               <div
-                className="radial-progress"
+                className="  radial-progress bg-green-700 text-primary-content border-4 border-green-700"
                 style={{
                   "--value": `${(sum / nbr) * 100}`,
-                  "--size": "16rem",
-                  "--thickness": "8px",
+                  "--size": "20rem",
+                  "--thickness": "16px",
                 }}
               >
-                {((sum / nbr) * 100).toFixed(2)} %
+                <h1 className="text-6xl">
+                  {" "}
+                  {((sum / nbr) * 100).toFixed(0)} %
+                </h1>
               </div>
             </div>{" "}
           </h2>

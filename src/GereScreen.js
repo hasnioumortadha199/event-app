@@ -130,12 +130,6 @@ export default function GereScreen() {
               {" "}
               {globalData.isPreTest && <StatComp />}
             </div>
-            <button
-              onClick={handleClass}
-              className="absolute bottom-8 right-8 m-5 btn btn-outline btn-info "
-            >
-              Classement
-            </button>
           </div>
         </div>
         <div className="w-2/3 h-96 m-5 card lg:card-side bg-base-100 shadow-xl">
@@ -146,6 +140,12 @@ export default function GereScreen() {
                 src="./Flash.png"
                 alt="image description"
               />
+              <button
+                onClick={handleClass}
+                className="absolute bottom-8 right-50 m-5 btn btn-outline btn-info "
+              >
+                Classement
+              </button>
             </div>
           </div>
         </div>{" "}
