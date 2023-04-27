@@ -64,7 +64,7 @@ export default function StatComp() {
                   "--thickness": "8px",
                 }}
               >
-                {(sum / nbr) * 100} %
+                {((sum / nbr) * 100).toFixed(2)} %
               </div>
             </div>{" "}
           </h2>
