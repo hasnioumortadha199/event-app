@@ -9,7 +9,7 @@ import { ColorIndex } from "./components/ColorIndex";
 import { useNavigate } from "react-router-dom";
 
 export default function GereScreen() {
-  const [initialSeconds, setInitialSeconds] = useState(15);
+  const [initialSeconds, setInitialSeconds] = useState(5);
   const [remainingSeconds, setRemainingSeconds] = useState(initialSeconds);
   const intervalIdRef = useRef(null);
   const [globalData, setGlobalData] = useState(0);
@@ -124,14 +124,6 @@ export default function GereScreen() {
         </div>{" "}
       </div>
       <div className="flex">
-        <div className="w-1/3 h-96 m-5 card lg:card-side bg-base-100 shadow-xl">
-          <div className="card-body ">
-            <div className="card-actions justify-center">
-              {" "}
-              {globalData.isPreTest && <StatComp />}
-            </div>
-          </div>
-        </div>
         <div className="w-2/3 h-96 m-5 card lg:card-side bg-base-100 shadow-xl">
           <div className="card-body ">
             <div className="card-actions place-content-center">
@@ -149,6 +141,14 @@ export default function GereScreen() {
             </div>
           </div>
         </div>{" "}
+        <div className="w-1/3 h-96 m-5 card lg:card-side bg-base-100 shadow-xl">
+          <div className="card-body ">
+            <div className="card-actions justify-center">
+              {" "}
+              {globalData.isPreTest && <StatComp />}
+            </div>
+          </div>
+        </div>
       </div>{" "}
     </div>
   );

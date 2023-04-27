@@ -37,13 +37,20 @@ export default function StatComp() {
     getDocs(usersQuery).then((usersSnap) => {
       let lsum = usersSnap.docs.reduce((partialSum, user) => {
         try {
-          let preNoteQues = user.data().preNoteQues[globalData.index];
-          return partialSum + preNoteQues.note;
+          let userData = user.data();
+          let userResponse = userData.preNoteQues.filter(
+            (note) => note.index == globalData.index
+          );
+          if (userResponse.length == 1) {
+            return partialSum + userResponse[0].note;
+          }
+          return partialSum;
         } catch (err) {
           return partialSum;
         }
       }, 0);
       setNbr(usersSnap.docs.length);
+      console.log(lsum);
       setSum(lsum);
     });
   }, [globalData]);
@@ -53,9 +60,7 @@ export default function StatComp() {
       <div>
         {globalData.isPreTest ? (
           <h2>
-            {" "}
             <div>
-              {" "}
               <div
                 className="  radial-progress bg-green-700 text-primary-content border-4 border-green-700"
                 style={{
@@ -64,10 +69,7 @@ export default function StatComp() {
                   "--thickness": "16px",
                 }}
               >
-                <h1 className="text-6xl">
-                  {" "}
-                  {((sum / nbr) * 100).toFixed(0)} %
-                </h1>
+                <h1 className="text-6xl"> {(sum / nbr) * 100} %</h1>
               </div>
             </div>{" "}
           </h2>
