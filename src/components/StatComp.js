@@ -72,7 +72,10 @@ export default function StatComp() {
                   "--thickness": "16px",
                 }}
               >
-                <h1 className="text-6xl"> {(sum / nbr) * 100} %</h1>
+                <h1 className="text-6xl">
+                  {" "}
+                  {((sum / nbr) * 100).toFixed(0)} %
+                </h1>
               </div>
             </div>{" "}
           </h2>
