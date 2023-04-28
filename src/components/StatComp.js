@@ -68,7 +68,7 @@ export default function StatComp() {
                 className="  radial-progress bg-green-700 text-primary-content border-4 border-green-700"
                 style={{
                   "--value": `${(sum / nbr) * 100}`,
-                  "--size": "20rem",
+                  "--size": "15rem",
                   "--thickness": "16px",
                 }}
               >

@@ -80,10 +80,10 @@ export const IndexValue = () => {
 
   return (
     <div className="p-2">
-      <h1 className="card-title text-5xl   ">
+      <h1 className="card-title text-6xl   ">
         Question N ° :{" "}
         {globalData ? (
-          <h2 className="card-title text-5xl">{globalData.index + 1}</h2>
+          <h2 className="card-title text-6xl">{globalData.index + 1}</h2>
         ) : null}
       </h1>
 
@@ -92,8 +92,8 @@ export const IndexValue = () => {
           <p>
             {globalData.index === item.index ? (
               <div>
-                <h2 className="mt-2 text-2xl">{item.question} </h2>
-                <h3 h2 className="mt-2 text-2xl">
+                <h2 className="mt-2 text-4xl">{item.question} </h2>
+                <h3 h2 className="mt-2 text-4xl">
                   <ul className="list-decimal">
                     {item.answers.map((i, idx) => (
                       <li>{i}</li>

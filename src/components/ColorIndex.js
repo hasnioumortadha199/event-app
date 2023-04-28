@@ -77,10 +77,10 @@ export const ColorIndex = () => {
 
   return (
     <div className="p-1">
-      <h1 className="card-title text-4xl ">
+      <h1 className="card-title text-6xl ">
         Question N ° :{" "}
         {globalData ? (
-          <h2 className=" text-4xl">{globalData.index + 1}</h2>
+          <h2 className=" text-6xl">{globalData.index + 1}</h2>
         ) : null}
       </h1>
 
@@ -88,7 +88,7 @@ export const ColorIndex = () => {
         <div key={item.id}>
           <p>
             {globalData.index === item.index ? (
-              <h5 className="  text-2xl  ">
+              <h5 className="  text-4xl  ">
                 {item.question}
                 <h3>
                   <ul className="list-decimal">

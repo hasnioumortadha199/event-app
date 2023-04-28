@@ -9,7 +9,7 @@ import { ColorIndex } from "./components/ColorIndex";
 import { useNavigate } from "react-router-dom";
 
 export default function GereScreen() {
-  const [initialSeconds, setInitialSeconds] = useState(5);
+  const [initialSeconds, setInitialSeconds] = useState(20);
   const [remainingSeconds, setRemainingSeconds] = useState(initialSeconds);
   const intervalIdRef = useRef(null);
   const [globalData, setGlobalData] = useState(0);
@@ -98,14 +98,14 @@ export default function GereScreen() {
   };
   return (
     <div className=" bg-slate-100">
-      <div className="flex ">
-        <div className="w-2/3 h-96 m-5 card lg:card-side bg-base-100 shadow-xl">
-          <div className="card-body ">
-            <div className="card-actions justify-end"></div>
-            {globalData.isPreTest && isColor ? <ColorIndex /> : <IndexValue />}
-          </div>
+      <div className=" m-5 h-[30rem]  h-full card lg:card-side bg-base-100 shadow-xl">
+        <div className="card-body ">
+          <div className="card-actions justify-end"></div>
+          {globalData.isPreTest && isColor ? <ColorIndex /> : <IndexValue />}
         </div>
-        <div className="w-1/3 h-96 card bg-base-100 shadow-xl m-5 p-3">
+      </div>
+      <div className="flex h-1/4">
+        <div className="w-2/5 card bg-base-100 shadow-xl m-5 p-3">
           <div className="  card-body">
             <h1 className="text-8xl text-center font-bold">
               {" "}
@@ -122,26 +122,24 @@ export default function GereScreen() {
             </div>
           </div>
         </div>{" "}
-      </div>
-      <div className="flex">
-        <div className="w-2/3 h-96 m-5 card lg:card-side bg-base-100 shadow-xl">
+        <div className="w-1/5  m-5 card lg:card-side bg-base-100 shadow-xl">
           <div className="card-body ">
             <div className="card-actions place-content-center">
               <img
-                class="h-60 max-w-full"
+                class="h-30 max-w-full"
                 src="./Flash.png"
                 alt="image description"
               />
               <button
                 onClick={handleClass}
-                className="absolute bottom-8 right-50 m-5 btn btn-outline btn-info "
+                className="absolute bottom-2 right-50 m-5 btn btn-outline btn-info "
               >
                 Classement
               </button>
             </div>
           </div>
         </div>{" "}
-        <div className="w-1/3 h-96 m-5 card lg:card-side bg-base-100 shadow-xl">
+        <div className="w-2/5 h-[18rem] m-5 card lg:card-side bg-base-100 shadow-xl">
           <div className="card-body ">
             <div className="card-actions justify-center">
               {" "}
