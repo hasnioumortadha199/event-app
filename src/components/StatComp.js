@@ -38,12 +38,15 @@ export default function StatComp() {
       let lsum = usersSnap.docs.reduce((partialSum, user) => {
         try {
           let userData = user.data();
-          let userResponse = userData.preNoteQues.filter(
-            (note) => note.index == globalData.index
-          );
-          if (userResponse.length == 1) {
-            return partialSum + userResponse[0].note;
+          if (userData.preNoteQues) {
+            let userResponse = userData.preNoteQues.filter(
+              (note) => note.index == globalData.index
+            );
+            if (userResponse.length == 1) {
+              return partialSum + userResponse[0].note;
+            }
           }
+
           return partialSum;
         } catch (err) {
           return partialSum;
