@@ -9,7 +9,7 @@ import { ColorIndex } from "./components/ColorIndex";
 import { useNavigate } from "react-router-dom";
 
 export default function GereScreen() {
-  const [initialSeconds, setInitialSeconds] = useState(20);
+  const [initialSeconds, setInitialSeconds] = useState(15);
   const [remainingSeconds, setRemainingSeconds] = useState(initialSeconds);
   const intervalIdRef = useRef(null);
   const [globalData, setGlobalData] = useState(0);
