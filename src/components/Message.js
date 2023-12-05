@@ -44,7 +44,7 @@ export const Message = ({ message }) => {
                       value={newMessage}
                       onChange={(e) => setNewMessage(e.target.value)}
                       type="text"
-                      className="input input-bordered text-black"
+                      className="input input-bordered text-balck"
                     />
                     <button
                       type="submit"
