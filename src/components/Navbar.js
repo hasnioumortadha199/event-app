@@ -1,17 +1,14 @@
+ 
 import React from "react";
 
 export default function Navbar() {
   return (
-    <div>
-      <div className="navbar bg-orange-700 text-primary-content">
-        <img class="h-14" src="./picto2.png" alt="image description" />
-        <p className="text-primary-content uppercase font-bold">
-          Algerie Poultry forum
-        </p>{" "}
-        <a href="/" className="btn btn-ghost normal-case text-xl">
-          Home{" "}
-        </a>
+    <nav className="bg-red-500 py-2">
+      <div className="container mx-auto flex justify-between items-center">
+      <a href="/ "><img class="h-16" src="./titre.png" alt="20 éme Cours International FMC" /></a> 
+      <h1 className="text-white text-xl ">20 éme Cour International FMC</h1>
+
       </div>
-    </div>
+    </nav>
   );
 }

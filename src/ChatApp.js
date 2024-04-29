@@ -6,6 +6,7 @@ import Cookies from "universal-cookie";
 import "./App.css";
 
 import Room from "./Room.js";
+import Navbar from "./components/Navbar.js";
 
 const cookies = new Cookies();
 
@@ -26,6 +27,7 @@ function ChatApp() {
   }
 
   return (
+    <div><Navbar />
     <AppWrapper isAuth={isAuth} setIsAuth={setIsAuth} setIsInChat={setIsInChat}>
       {!isInChat ? (
         <div className="hero min-h-screen  ">
@@ -52,7 +54,7 @@ function ChatApp() {
           <Room />
         </div>
       )}
-    </AppWrapper>
+    </AppWrapper></div>
   );
 }
 

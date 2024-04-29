@@ -32,20 +32,7 @@ export const IndexValue = () => {
 
     getData();
   }, []);
-  const handleChangetwo = async () => {
-    try {
-      const docRef = doc(db, "globalData", "admin-control");
-      await updateDoc(docRef, { isPreTest: false });
-      const updatedDocSnap = await getDoc(docRef);
-      if (updatedDocSnap.exists()) {
-        setGlobalData(updatedDocSnap.data());
-      } else {
-        console.log("No such document!");
-      }
-    } catch (error) {
-      console.error("Error incrementing index:", error);
-    }
-  };
+
   const handleIncrement = async () => {
     try {
       const docRef = doc(db, "globalData", "admin-control");
@@ -79,36 +66,27 @@ export const IndexValue = () => {
   }, []);
 
   return (
-    <div className="p-2">
-      <h1 className="card-title text-6xl   ">
-        Question N ° :{" "}
-        {globalData ? (
-          <h2 className="card-title text-6xl">{globalData.index + 1}</h2>
-        ) : null}
-      </h1>
+    <div className="p-2 flex flex-col">
+      <h1 className="text-6xl font-bold mb-2">Question N°: {globalData ? globalData.index + 1 : null}</h1>
 
       {myCollectionData.map((item) => (
         <div key={item.id}>
-          <p>
-            {globalData.index === item.index ? (
-              <div>
-                <h2 className="mt-2 text-4xl">{item.question} </h2>
-                <h3 h2 className="mt-2 text-4xl">
-                  <ul className="list-decimal">
-                    {item.answers.map((i, idx) => (
-                      <li>{i}</li>
-                    ))}
-                  </ul>
-                </h3>
-              </div>
-            ) : null}
-          </p>
+          {globalData.index === item.index && (
+            <div>
+              <h2 className="text-3xl m-4">{item.question}</h2>
+              <ul className="list-decimal pl-4">
+                {item.answers.map((i, idx) => (
+                  <li key={idx} className="text-gray-700 text-xl">{i}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
       ))}
 
       <button
         onClick={handleIncrement}
-        className="absolute bottom-8 right-8 m-5 btn btn-outline btn-info "
+        className="px-3 py-1 self-end bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600 text-sm"
       >
         Next
       </button>

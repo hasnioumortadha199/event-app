@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import "tailwindcss/tailwind.css";
 import { IndexValue } from "./components/indexValue";
-import Globale from "./components/Globale";
 import StatComp from "./components/StatComp";
 import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "./firebase-config";
 import { ColorIndex } from "./components/ColorIndex";
 import { useNavigate } from "react-router-dom";
-
+import Navbar from "./components/Navbar";
+import StatScreen from "./StatCyrcle";
+import StatCycleScreen from "./StatCyrcle";
 export default function GereScreen() {
-  const [initialSeconds, setInitialSeconds] = useState(15);
+  const [initialSeconds, setInitialSeconds] = useState(7);
   const [remainingSeconds, setRemainingSeconds] = useState(initialSeconds);
   const intervalIdRef = useRef(null);
   const [globalData, setGlobalData] = useState(0);
@@ -94,9 +95,9 @@ export default function GereScreen() {
   };
 
   const handleClass = () => {
-    navigate("/stat");
+    navigate("/statistics");
   };
-  return (
+  return ( <div><Navbar />
     <div className=" bg-slate-100">
       <div className=" m-5 h-[30rem]  h-full card lg:card-side bg-base-100 shadow-xl">
         <div className="card-body ">
@@ -112,10 +113,12 @@ export default function GereScreen() {
               {remainingSeconds}{" "}
             </h1>
 
-            <div className="card-actions absolute bottom-8 right-8 m-5 ">
+            <div className="card-actions absolute bottom-8 right-8 m-2 ">
               <button
                 onClick={handleRestart}
-                className="btn btn-outline btn-info"
+                className="px-4 py-2 bg-red-500 text-white rounded-md border border-red-500 hover:bg-red-600 focus:outline-none focus:bg-red-600"
+
+                
               >
                 Démarer
               </button>
@@ -127,19 +130,20 @@ export default function GereScreen() {
             <div className="card-actions place-content-center">
               <img
                 class="h-30 max-w-full"
-                src="./Flash.png"
+                src="./flash.png"
                 alt="image description"
               />
               <button
                 onClick={handleClass}
-                className="absolute bottom-2 right-50 m-5 btn btn-outline btn-info "
+                className="absolute bottom-2 right-50 m-5 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600"
+
               >
                 Classement
               </button>
             </div>
           </div>
         </div>{" "}
-        <div className="w-2/5 h-[18rem] m-5 card lg:card-side bg-base-100 shadow-xl">
+        <div className="w-2/5 h-[20rem] m-2 card lg:card-side bg-base-100 shadow-xl">
           <div className="card-body ">
             <div className="card-actions justify-center">
               {" "}
@@ -148,6 +152,6 @@ export default function GereScreen() {
           </div>
         </div>
       </div>{" "}
-    </div>
+    </div></div>
   );
 }
