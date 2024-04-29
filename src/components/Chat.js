@@ -10,6 +10,7 @@ import {
 
 import "../style/Chat.css";
 import Message from "./Message";
+ 
 
 export const Chat = () => {
   const [questions, setQuestions] = useState([]);
@@ -30,6 +31,7 @@ export const Chat = () => {
 
   return (
     <div>
+   
       {questions.map((message) => (
         <Message key={message.id} message={message} />
       ))}

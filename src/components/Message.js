@@ -1,6 +1,7 @@
 import { collection, doc, setDoc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
 import { db } from "../firebase-config";
+ 
 
 export const Message = ({ message }) => {
   const [newMessage, setNewMessage] = useState("");
@@ -17,6 +18,7 @@ export const Message = ({ message }) => {
   };
   return (
     <div>
+      
       <div className="chat chat-start">
         <div className="chat-image avatar">
           <div className="w-10 rounded-full">
@@ -27,8 +29,8 @@ export const Message = ({ message }) => {
           </div>
         </div>
         <div className="chat-header">{message.userName}</div>
-        <div className="chat-bubble dropdown">
-          <label tabIndex={0}>{message.question}</label>
+        <div className="bg-red-600 chat-bubble dropdown">
+          <label  tabIndex={0}>{message.question}</label>
           <ul
             tabIndex={0}
             className="dropdown-content p-2 shadow bg-base-100 rounded-box  "
