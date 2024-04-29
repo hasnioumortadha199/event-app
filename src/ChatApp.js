@@ -6,7 +6,6 @@ import Cookies from "universal-cookie";
 import "./App.css";
 
 import Room from "./Room.js";
-import Navbar from "./components/Navbar.js";
 
 const cookies = new Cookies();
 
@@ -27,26 +26,20 @@ function ChatApp() {
   }
 
   return (
-    <div><Navbar />
     <AppWrapper isAuth={isAuth} setIsAuth={setIsAuth} setIsInChat={setIsInChat}>
       {!isInChat ? (
-        <div className="hero min-h-screen  ">
-          <div className="hero-content text-center">
-            <div className="max-w-md">
-              <h1 className="text-5xl font-bold">Hello there 👋</h1>
-              <p className="py-6">
-                Join the conversation , meet new people and make Connection in
-                one shared room
-              </p>
-              <button
-                onClick={() => {
-                  setIsInChat(true);
-                }}
-                className="btn"
-              >
-                Join the conversation
-              </button>
-            </div>
+        <div className="hero min-h-screen bg-gray-100 flex items-center justify-center">
+          <div className="max-w-md p-8 bg-white shadow-lg rounded-lg">
+            <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to the Chat Room</h1>
+            <p className="text-gray-600 mb-8">Join the conversation, meet new people, and make connections in one shared room.</p>
+            <button
+              onClick={() => {
+                setIsInChat(true);
+              }}
+              className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Join the Conversation
+            </button>
           </div>
         </div>
       ) : (
@@ -54,7 +47,7 @@ function ChatApp() {
           <Room />
         </div>
       )}
-    </AppWrapper></div>
+    </AppWrapper>
   );
 }
 
