@@ -21,7 +21,7 @@ export default function ReviewPage() {
          Commentaires pour chaque jour
         </h1>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-5 md:gap-8">
-          {Array.from({ length: 5 }, (_, i) => (
+          {Array.from({ length: 7 }, (_, i) => (
             <Card
               key={i}
               day={i + 1}

@@ -25,10 +25,9 @@ function CommentCard({ comment }) {
       <div className="flex items-start justify-between">
         <div>
           <p className="text-lg font-semibold"><span className="font-bold">Utilisateur :</span>  {comment.username}</p>
-          <p className="text-gray-600"><span className="text-lg text-gray-800 file:font-bold">Prof :</span> {comment.profName}</p>
+          <p className="text-gray-600"><span className="text-lg text-gray-800 file:font-bold">Prof :</span> {comment.instructorName}</p>
           <p className="text-gray-600"><span className="text-lg text-gray-800 file:font-bold">Programme :</span> {comment.programmeText}</p>
-          <p className="text-gray-600"><span className="text-lg text-gray-800 file:font-bold">commentaire :</span>{comment.instructorComment}</p>
-         
+          <p className="text-gray-600"><span className="text-lg text-gray-800 file:font-bold">commentaire :</span>{comment.comment}</p>
         </div>
         <div className="flex items-center">
           <p className="text-gray-700">Rating: {renderStars(comment.rating)}</p>
@@ -72,6 +71,9 @@ export default function ReviewDayProf() {
           for (const commentDoc of commentsQuerySnapshot.docs) {
             // Get the comment data
             const commentData = commentDoc.data();
+            const firstComment = Object.values(commentData.instructorComment)[0];
+            const instructorName = commentData.instructorComment.instructorName;
+            const comment = commentData.instructorComment.comment;
 
             // Fetch username from users collection based on userEmail
             const userQuerySnapshot = await getDocs(
@@ -88,17 +90,23 @@ export default function ReviewDayProf() {
               username = userData.username;
             });
 
-            // Push user comment, rating, username, and programme text to fetchedComments
+
+
+            const profName = instructorName;
+          
             fetchedComments.push({
               type: 'user',
-              instructorComment: commentData.instructorComment,
+              instructorComment: firstComment,
               rating: commentData.rating,
               username: username,
               programmeText: programmeText,
-              profName: profName
+              comment:comment,
+              profName: profName, // Use profName instead of instructorName if they are equivalent
+              instructorName: instructorName
             });
           }
         }
+        
 
         setComments(fetchedComments);
       } catch (error) {

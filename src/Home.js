@@ -23,6 +23,9 @@ export default function Home() {
   const goToReview = () => {
     navigate("/review");
   };
+  const goToNotification = () => {
+    navigate("/notification");
+  };
 
 
   return (
@@ -55,7 +58,13 @@ export default function Home() {
             description="Section de révision et fournissez vos commentaires."
             onClick={goToReview}
           />
+             <Card
+            title="Notification"
+            description="Section  de  révision  et fournissez vos Notification (ajout supprimé édit)."
+            onClick={goToNotification}
+          />
         </div>
+        
       </div>
     </div>
   );
