@@ -24,7 +24,7 @@ export default function DigrammeScreen() {
         let falseCount = 0;
 
         usersData.forEach((user) => {
-          user.postNoteQues.forEach((question) => {
+          user.preNoteQues.forEach((question) => {
             if (question.note === 1) {
               correctCount++;
             } else {

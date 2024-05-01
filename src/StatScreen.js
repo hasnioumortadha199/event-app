@@ -13,7 +13,7 @@ export default function StatScreen() {
     getDocs(userQuery)
       .then((usersSnap) => {
         let sum = usersSnap.docs.reduce((prevSum, user) => {
-          return prevSum + (user.data().notePostTest || 0);
+          return prevSum + (user.data().notePreTest || 0);
         }, 0);
         setSumNote((sum * 100) / (41 * usersSnap.docs.length));
       })
@@ -26,7 +26,7 @@ export default function StatScreen() {
     const fetchUsers = async () => {
       try {
         const querySnapshot = await getDocs(
-          query(collection(db, "users"), orderBy("notePostTest", "desc"))
+          query(collection(db, "users"), orderBy("notePreTest", "desc"))
         );
         const results = querySnapshot.docs.map((doc) => ({
           id: doc.id,
@@ -67,7 +67,7 @@ export default function StatScreen() {
                 <td className="p-2">{index + 1}</td>
                 <td className="p-2">{user.username}</td>
                 <td className="p-2">
-                  {user.notePostTest} / 41
+                  {user.notePreTest} / 41
                 </td>
                 <td className="p-2">{user.email}</td>
               </tr>
