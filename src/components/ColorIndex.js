@@ -78,7 +78,7 @@ export const ColorIndex = () => {
   }, []);
 
   return (
-    <div className="p-4">
+    <div className="p-2">
       <h1 className="text-6xl font-bold mb-4">
         Question N°: {globalData ? globalData.index + 1 : null}
       </h1>

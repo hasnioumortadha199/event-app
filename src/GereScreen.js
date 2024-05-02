@@ -97,7 +97,7 @@ export default function GereScreen() {
   const handleClass = () => {
     navigate("/statistics");
   };
-  return ( <div><Navbar />
+  return ( <div>
     <div className=" bg-slate-100">
       <div className=" m-5 h-[30rem]  h-full card lg:card-side bg-base-100 shadow-xl">
         <div className="card-body ">
