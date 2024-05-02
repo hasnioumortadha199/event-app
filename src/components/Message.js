@@ -5,7 +5,7 @@ import { db } from "../firebase-config";
 
 export const Message = ({ message }) => {
   const [newMessage, setNewMessage] = useState("");
-  const messagesRef = doc(db, "questions2", message.id);
+  const messagesRef = doc(db, "questions-20eme", message.id);
   const a = message.response;
 
   const handleSubmit = async (e) => {

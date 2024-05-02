@@ -8,7 +8,7 @@ import { useState } from "react";
 import { db, auth } from "../firebase-config";
 export const SendMessage = () => {
   const [newMessage, setNewMessage] = useState("");
-  const messagesRef = collection(db, "questions2");
+  const messagesRef = collection(db, "questions-20eme");
   const data = {
     response: "newMessage",
   };

@@ -14,7 +14,7 @@ import Message from "./Message";
 
 export const Chat = () => {
   const [questions, setQuestions] = useState([]);
-  const messagesRef = collection(db, "questions2");
+  const messagesRef = collection(db, "questions-20eme");
   useEffect(() => {
     const queryMessages = query(messagesRef, orderBy("createdAt"));
     const unsuscribe = onSnapshot(queryMessages, (snapshot) => {
