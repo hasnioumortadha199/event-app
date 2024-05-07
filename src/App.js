@@ -11,6 +11,7 @@ import ReviewDayPage from "./days_page";
 import ReviewDayProf from "./review_prof";
 import DigrammeScreen from "./Diagramme";
 import NotificationPage from "./Notification";
+import CombinedDigrammeScreens from "./CombineDigramme";
  
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
         <Route path="/reviewprof/:day" element={< ReviewDayProf />} />
         <Route path="/review/:day" element={<ReviewDayPage />} />
         
-        <Route path="/statistics/digramme" element={<DigrammeScreen />} />
+        <Route path="/statistics/digramme" element={<CombinedDigrammeScreens />} />
       </Routes>
     </div>
   );

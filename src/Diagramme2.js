@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Chart from "chart.js/auto";
 import NavbarT from "./components/NavbarTwo";
 
-export default function DigrammeScreen() {
+export default function DigrammeScreenTwo() {
   const [totalCorrect, setTotalCorrect] = useState(0);
   const [totalFalse, setTotalFalse] = useState(0);
   const [totalAnswers, setTotalAnswers] = useState(0);
@@ -24,7 +24,7 @@ export default function DigrammeScreen() {
         let falseCount = 0;
 
         usersData.forEach((user) => {
-          user.preNoteQues.forEach((question) => {
+          user.postNoteQues.forEach((question) => {
             if (question.note === 1) {
               correctCount++;
             } else {
@@ -55,7 +55,7 @@ export default function DigrammeScreen() {
   }, []);
 
   const createChart = (correct, falseAnswers) => {
-    const ctx = document.getElementById("myChart2").getContext("2d");
+    const ctx = document.getElementById("myChart").getContext("2d");
     new Chart(ctx, {
       type: "doughnut",
       data: {
@@ -77,13 +77,13 @@ export default function DigrammeScreen() {
 
   return (
     <div>
-   
+      
       <div className="p-6">
-        <h1 className="m-5 text-6xl font-bold mb-4   text-center">PreTest </h1>
+        <h1 className="m-5 text-6xl font-bold mb-4 text-center">PostTest</h1>
         
       </div>
       <div className="container mx-auto px-4 overflow-x-auto">
-        <canvas id="myChart2" width="400" height="400"></canvas>
+        <canvas id="myChart" width="400" height="400"></canvas>
       </div>
       <div className="mt-5 text-center">
           <p className="text-2xl">Total Correct: {totalCorrect} ({correctPercentage}%)</p>
