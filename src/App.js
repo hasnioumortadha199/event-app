@@ -14,6 +14,7 @@ import NotificationPage from "./Notification";
 import CombinedDigrammeScreens from "./CombineDigramme";
 import QRCodeGenerator from "./components/qrcode";
 import CreativeWorldRedirect from "./components/redirectcw";
+import A4ImagePage from "./components/afficheA4";
  
 
 function App() {
@@ -25,14 +26,13 @@ function App() {
         <Route path="/chat" element={<ChatApp />} />
         <Route path="/management" element={<GereScreen />} />
         <Route path="/statistics" element={<StatScreen />} />
-         
+          <Route path="/affiche" element={<A4ImagePage />} />
         <Route path="/notification" element={<NotificationPage />} />
         <Route path="/review" element={<ReviewPage />} />
         <Route path="/reviewprof/:day" element={< ReviewDayProf />} />
         <Route path="/review/:day" element={<ReviewDayPage />} />
-                <Route path="/codeqr" element={<QRCodeGenerator />} />
+        <Route path="/codeqr" element={<QRCodeGenerator />} />
          <Route path="/creative_world" element={<CreativeWorldRedirect />} />
-
         <Route path="/statistics/digramme" element={<CombinedDigrammeScreens />} />
       </Routes>
     </div>
