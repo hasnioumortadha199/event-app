@@ -99,8 +99,7 @@ export default function GereScreen() {
   };
   return ( <div>
     <div className="">
-         <Navbar />
-      <div className=" m-5 h-[30rem]  h-full card lg:card-side bg-base-100 shadow-xl">
+       <div className=" m-5 h-[30rem]  h-full card lg:card-side bg-base-100 shadow-xl">
         <div className="card-body ">
           <div className="card-actions justify-end"></div>
           {globalData.isPreTest && isColor ? <ColorIndex /> : <IndexValue />}

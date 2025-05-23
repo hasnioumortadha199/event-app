@@ -99,7 +99,7 @@ export const ColorIndex = () => {
         onClick={handleIncrement}
         className="px-4 py-2 absolute bottom-4 right-4 text-white rounded-md bg-gradient-to-r from-[#97b5a5] via-[#4f7f80] to-[#4f7f80] hover:opacity-90 transition-all duration-300 text-sm"
       >
-        Next
+        Suivant
       </button>
     </div>
   );

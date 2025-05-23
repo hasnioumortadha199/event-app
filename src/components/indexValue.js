@@ -89,7 +89,7 @@ export const IndexValue = () => {
       <div className="self-end mt-4">
         <button
           onClick={handleNext}
-          className="px-5 py-2 text-white rounded-md bg-gradient-to-r from-[#97b5a5] via-[#4f7f80] to-[#4f7f80] hover:opacity-90 transition-all duration-300 text-sm"
+        className="px-4 py-2 absolute bottom-4 right-4 text-white rounded-md bg-gradient-to-r from-[#97b5a5] via-[#4f7f80] to-[#4f7f80] hover:opacity-90 transition-all duration-300 text-sm"
         >
           Suivant
         </button>
