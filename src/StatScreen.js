@@ -2,20 +2,23 @@ import { collection, query, orderBy, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { db } from "./firebase-config";
 import Navbar from "./components/Navbar";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link } from "react-router-dom";
 
 export default function StatScreen() {
   const [users, setUsers] = useState([]);
-  const [sumNote, setSumNote] = useState(0);
+  const [averageNote, setAverageNote] = useState(0);
 
   const fetchGlobalStats = () => {
     const userQuery = query(collection(db, "users"));
     getDocs(userQuery)
-      .then((usersSnap) => {
-        let sum = usersSnap.docs.reduce((prevSum, user) => {
-          return prevSum + (user.data().notePostTest || 0);
-        }, 0);
-        setSumNote((sum * 100) / (41 * usersSnap.docs.length));
+      .then((snap) => {
+        const totalUsers = snap.docs.length;
+        const totalNote = snap.docs.reduce(
+          (sum, user) => sum + (user.data().notePostTest || 0),
+          0
+        );
+        const maxScore = 41;
+        setAverageNote(((totalNote * 100) / (maxScore * totalUsers)).toFixed(2));
       })
       .catch((error) => {
         console.error("Error fetching global stats:", error);
@@ -43,37 +46,54 @@ export default function StatScreen() {
   }, []);
 
   return (
-    <div>
+    <div className="min-h-screen bg-gradient-to-b from-[#97b5a5] to-[#4f7f80]">
       <Navbar />
-      <div className="p-6">
-        <div className="flex justify-between items-center mb-4">
-          <h1 className="text-6xl font-bold uppercase">Classement</h1>
-          <Link to="/statistics/digramme" className=" m-5 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600">Diagramme Circulaire</Link>
+      <div className="p-6 max-w-7xl mx-auto text-white">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-6">
+          <h1 className="text-4xl font-bold uppercase mb-4 md:mb-0">Classement</h1>
+          <Link
+            to="/statistics/digramme"
+            className="px-4 py-2 rounded-md bg-[#4f7f80]  hover:opacity-90 text-white transition"
+          >
+            Diagramme Circulaire
+          </Link>
         </div>
-      </div>
-      <div className="container mx-auto px-4 overflow-x-auto">
-        <table className="table w-full border-collapse border border-gray-300">
-          <thead>
-            <tr className="bg-gray-100">
-              <th className="p-2">Position</th>
-              <th className="p-2">Nom</th>
-              <th className="p-2">Note</th>
-              <th className="p-2">Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user, index) => (
-              <tr key={user.id} className={index % 2 === 0 ? "bg-gray-50" : ""}>
-                <td className="p-2">{index + 1}</td>
-                <td className="p-2">{user.username}</td>
-                <td className="p-2">
-                  {user.notePostTest} / 39
-                </td>
-                <td className="p-2">{user.email}</td>
+
+        <div className="mb-4">
+          <p className="text-lg">
+            Moyenne générale : <strong>{averageNote}%</strong>
+          </p>
+        </div>
+
+        <div className="overflow-x-auto bg-white rounded-xl shadow-lg">
+          <table className="min-w-full text-gray-700">
+            <thead className="bg-gray-100 border-b">
+              <tr>
+                <th className="py-3 px-4 text-left">Position</th>
+                <th className="py-3 px-4 text-left">Nom</th>
+                <th className="py-3 px-4 text-left">Note</th>
+                <th className="py-3 px-4 text-left">Email</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map((user, index) => (
+                <tr
+                  key={user.id}
+                  className={`border-b hover:bg-gray-50 transition ${
+                    index === 0 ? "bg-yellow-100 font-semibold" :
+                    index === 1 ? "bg-gray-200" :
+                    index === 2 ? "bg-yellow-50" : ""
+                  }`}
+                >
+                  <td className="py-3 px-4">{index + 1}</td>
+                  <td className="py-3 px-4">{user.username}</td>
+                  <td className="py-3 px-4">{user.notePostTest} / 39</td>
+                  <td className="py-3 px-4">{user.email}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

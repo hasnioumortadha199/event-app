@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import { FaComment , FaComments  } from 'react-icons/fa';
+import { FaComment, FaComments } from "react-icons/fa";
+
 export default function ReviewPage() {
   const navigate = useNavigate();
 
@@ -14,13 +15,14 @@ export default function ReviewPage() {
   };
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gradient-to-b from-[#97b5a5] to-[#4f7f80] min-h-screen text-white">
       <Navbar />
-      <div className="container mx-auto py-12">
-        <h1 className="text-3xl font-semibold text-center mb-8">
-         Commentaires pour chaque jour
+      <div className="container mx-auto py-12 px-4">
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-10">
+          Commentaires pour chaque jour
         </h1>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-5 md:gap-8">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {Array.from({ length: 7 }, (_, i) => (
             <Card
               key={i}
@@ -37,32 +39,25 @@ export default function ReviewPage() {
 
 function Card({ day, onClickReview, onClickTeacherComment }) {
   return (
-    <div className="bg-white rounded-lg shadow-md">
-      <div className="p-6">
-        <h2 className="text-lg font-semibold mb-2">Jour {day}</h2>
-       < p className="text-sm text-gray-500 mb-2"> Voir les commentaire</p> 
-      </div>
-      <div className="p-2 flex flex-col">
+    <div className="bg-white text-gray-800 rounded-xl shadow-md hover:shadow-xl transition-shadow p-6">
+      <h2 className="text-xl font-semibold mb-2">Jour {day}</h2>
+      <p className="text-sm text-gray-500 mb-4">Commentaires disponibles :</p>
+
+      <div className="space-y-3">
         <button
           onClick={onClickReview}
-          className="flex items-center justify-center px-4 py-2 bg-red-100 text-black rounded-md hover:bg-red-600 focus:outline-none focus:bg-blue-600 mb-2"
+          className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-[#97b5a5] via-[#4f7f80] to-[#4f7f80] text-white rounded-md hover:opacity-90 transition-all"
         >
-          
-          <span>Pour le programme </span> {/* Text */}
-      <span className="ml-2"> {/* Space */}
-      <FaComment />{/* Teacher icon */}
-      </span>
-         
+          <FaComment />
+          <span>Pour le programme</span>
         </button>
+
         <button
           onClick={onClickTeacherComment}
-          className="flex items-center justify-center px-4 py-2 bg-red-300 text-black rounded-md hover:bg-red-600  focus:outline-none focus:bg-red-600"
+          className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-[#4f7f80] via-[#2c4d4d] to-[#2c4d4d] text-white rounded-md hover:opacity-90 transition-all"
         >
-           
-           <span>Pour le professeur </span> {/* Text */}
-      <span className="ml-2"> {/* Space */}
-      <FaComments /> {/* Teacher icon */}
-      </span>
+          <FaComments />
+          <span>Pour le professeur</span>
         </button>
       </div>
     </div>

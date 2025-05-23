@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { db } from "./firebase-config";
 import { collection, query, where, getDocs } from 'firebase/firestore';
  
-import NavbarT from "./components/NavbarTwo";
+ import Navbar from "./components/Navbar";
 
 // Function to generate star icons based on rating
 function renderStars(rating) {
@@ -108,7 +108,7 @@ export default function ReviewDayPage() {
 
   return (
     <div className="bg-gray-100 min-h-screen">
-      <NavbarT />
+      <Navbar />
       <div className="container mx-auto py-12">
         <h1 className="text-3xl font-semibold text-center mb-8">
           Commentaires pour le jour {day}

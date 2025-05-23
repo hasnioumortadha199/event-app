@@ -12,6 +12,8 @@ import ReviewDayProf from "./review_prof";
 import DigrammeScreen from "./Diagramme";
 import NotificationPage from "./Notification";
 import CombinedDigrammeScreens from "./CombineDigramme";
+import QRCodeGenerator from "./components/qrcode";
+import CreativeWorldRedirect from "./components/redirectcw";
  
 
 function App() {
@@ -28,7 +30,9 @@ function App() {
         <Route path="/review" element={<ReviewPage />} />
         <Route path="/reviewprof/:day" element={< ReviewDayProf />} />
         <Route path="/review/:day" element={<ReviewDayPage />} />
-        
+                <Route path="/codeqr" element={<QRCodeGenerator />} />
+         <Route path="/creative_world" element={<CreativeWorldRedirect />} />
+
         <Route path="/statistics/digramme" element={<CombinedDigrammeScreens />} />
       </Routes>
     </div>

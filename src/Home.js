@@ -10,6 +10,8 @@ export default function Home() {
   const goToStatistics = () => navigate("/statistics");
   const goToReview = () => navigate("/review");
   const goToNotification = () => navigate("/notification");
+  const goToCodeQr = () => navigate("/codeqr");
+  
 
   return (
     <div className="bg-gradient-to-b from-[#97b5a5] to-[#4f7f80] min-h-screen">
@@ -44,6 +46,11 @@ export default function Home() {
             title="Notification"
             description="Ajoutez, éditez ou supprimez les notifications."
             onClick={goToNotification}
+          />
+             <Card
+            title="CODE QR"
+            description="Ajoutez, un CODE QR."
+            onClick={goToCodeQr}
           />
         </div>
       </div>
