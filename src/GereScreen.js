@@ -98,7 +98,8 @@ export default function GereScreen() {
     navigate("/statistics");
   };
   return ( <div>
-    <div className=" bg-slate-100">
+    <div className="">
+         <Navbar />
       <div className=" m-5 h-[30rem]  h-full card lg:card-side bg-base-100 shadow-xl">
         <div className="card-body ">
           <div className="card-actions justify-end"></div>
@@ -106,25 +107,21 @@ export default function GereScreen() {
         </div>
       </div>
       <div className="flex h-1/4">
-        <div className="w-2/5 card bg-base-100 shadow-xl m-5 p-3">
-          <div className="  card-body">
-            <h1 className="text-8xl text-center font-bold">
-              {" "}
-              {remainingSeconds}{" "}
-            </h1>
+       <div className="w-full md:w-2/5 bg-white rounded-xl shadow-xl m-5 p-6 relative">
+  <div className="flex flex-col items-center justify-center h-full">
+    <h1 className="text-8xl font-bold text-gray-800 mb-6">
+      {remainingSeconds}
+    </h1>
 
-            <div className="card-actions absolute bottom-8 right-8 m-2 ">
-              <button
-                onClick={handleRestart}
-                className="px-4 py-2 bg-red-500 text-white rounded-md border border-red-500 hover:bg-red-600 focus:outline-none focus:bg-red-600"
+    <button
+      onClick={handleRestart}
+      className="px-6 py-3 text-white rounded-md bg-gradient-to-r from-[#97b5a5] via-[#4f7f80] to-[#4f7f80] hover:opacity-90 focus:outline-none transition-all duration-300 absolute bottom-6 right-6"
+    >
+      Démarrer
+    </button>
+  </div>
+</div>
 
-                
-              >
-                Démarer
-              </button>
-            </div>
-          </div>
-        </div>{" "}
         <div className="w-1/5  m-5 card lg:card-side bg-base-100 shadow-xl">
           <div className="card-body ">
             <div className="card-actions place-content-center">
@@ -135,7 +132,7 @@ export default function GereScreen() {
               />
               <button
                 onClick={handleClass}
-                className="absolute bottom-2 right-50 m-5 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600"
+  className="absolute bottom-2 right-50 m-5 px-4 py-2 text-white rounded-md bg-gradient-to-r from-[#97b5a5] via-[#4f7f80] to-[#4f7f80] hover:opacity-90 focus:outline-none"
 
               >
                 Classement

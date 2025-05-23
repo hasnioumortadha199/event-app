@@ -3,7 +3,6 @@ import { db } from "../firebase-config";
 import {
   collection,
   query,
-  where,
   getDocs,
   doc,
   getDoc,
@@ -13,10 +12,10 @@ import {
 
 export const IndexValue = () => {
   const [myCollectionData, setMyCollectionData] = useState([]);
-  const [globalData, setGlobalData] = useState(0);
+  const [globalData, setGlobalData] = useState(null);
 
   useEffect(() => {
-    const getData = async () => {
+    const fetchGlobalData = async () => {
       try {
         const docRef = doc(db, "globalData", "admin-control");
         const docSnap = await getDoc(docRef);
@@ -26,70 +25,75 @@ export const IndexValue = () => {
           console.log("No such document!");
         }
       } catch (error) {
-        console.error("Error getting document:", error);
+        console.error("Error getting global data:", error);
       }
     };
 
-    getData();
+    const fetchQuestions = async () => {
+      try {
+        const q = query(collection(db, "preTest"));
+        const snapshot = await getDocs(q);
+        const data = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setMyCollectionData(data);
+      } catch (error) {
+        console.error("Error getting questions:", error);
+      }
+    };
+
+    fetchGlobalData();
+    fetchQuestions();
   }, []);
 
-  const handleIncrement = async () => {
+  const handleNext = async () => {
     try {
       const docRef = doc(db, "globalData", "admin-control");
       await updateDoc(docRef, {
         index: increment(1),
         isPreTest: false,
       });
-      console.log("Document updated successfully.");
-      const updatedDocSnap = await getDoc(docRef);
-      if (updatedDocSnap.exists()) {
-        setGlobalData(updatedDocSnap.data());
-      } else {
-        console.log("No such document!");
+      const updatedSnap = await getDoc(docRef);
+      if (updatedSnap.exists()) {
+        setGlobalData(updatedSnap.data());
       }
     } catch (error) {
-      console.error("Error incrementing index:", error);
+      console.error("Error updating index:", error);
     }
   };
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const q = query(collection(db, "preTest"));
-      const querySnapshot = await getDocs(q);
-      const collectionData = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...doc.data(),
-      }));
-      setMyCollectionData(collectionData);
-    };
-    fetchData();
-  }, []);
+  const currentQuestion = myCollectionData.find(
+    (item) => globalData && item.index === globalData.index
+  );
 
   return (
-    <div className="p-2 flex flex-col">
-      <h1 className="text-6xl font-bold mb-2">Question N°: {globalData ? globalData.index + 1 : null}</h1>
+    <div className="p-4 flex flex-col gap-4 ">
+      <h1 className="text-4xl font-bold text-[#4f7f80]">
+        Question N°: {globalData ? globalData.index + 1 : "Chargement..."}
+      </h1>
 
-      {myCollectionData.map((item) => (
-        <div key={item.id}>
-          {globalData.index === item.index && (
-            <div>
-              <h2 className="text-3xl m-4">{item.question}</h2>
-              <ul className="list-decimal pl-4">
-                {item.answers.map((i, idx) => (
-                  <li key={idx} className="text-gray-700 text-xl">{i}</li>
-                ))}
-              </ul>
-            </div>
-          )}
+      {currentQuestion ? (
+        <div>
+          <h2 className="text-2xl font-semibold text-gray-800 mb-3">{currentQuestion.question}</h2>
+          <ul className="list-decimal pl-5 space-y-2">
+            {currentQuestion.answers.map((answer, idx) => (
+              <li key={idx} className="text-xl text-gray-700">{answer}</li>
+            ))}
+          </ul>
         </div>
-      ))}
+      ) : (
+        <p className="text-gray-500">Aucune question disponible.</p>
+      )}
 
-      <button
-        onClick={handleIncrement}
-        className="px-3 py-1 self-end bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600 text-sm"
-      >
-        Next
-      </button>
+      <div className="self-end mt-4">
+        <button
+          onClick={handleNext}
+          className="px-5 py-2 text-white rounded-md bg-gradient-to-r from-[#97b5a5] via-[#4f7f80] to-[#4f7f80] hover:opacity-90 transition-all duration-300 text-sm"
+        >
+          Suivant
+        </button>
+      </div>
     </div>
   );
 };
