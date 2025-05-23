@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, query } from "firebase/firestore";
 import { db } from "./firebase-config";
-import Navbar from "./components/Navbar";
 import Chart from "chart.js/auto";
-import NavbarT from "./components/NavbarTwo";
 
 export default function DigrammeScreenTwo() {
   const [totalCorrect, setTotalCorrect] = useState(0);

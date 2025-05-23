@@ -11,7 +11,7 @@ export default function CombinedDigrammeScreens() {
       
       <div className="mb-12" style={{ display: "flex", justifyContent: "center" }}>
         <DigrammeScreen />
-        <DigrammeScreenTwo />
+        {/* <DigrammeScreenTwo /> */}
       </div></div>
     </div>
   );

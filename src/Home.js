@@ -47,11 +47,11 @@ export default function Home() {
             description="Ajoutez, éditez ou supprimez les notifications."
             onClick={goToNotification}
           />
-             <Card
+             {/* <Card
             title="CODE QR"
             description="Ajoutez, un CODE QR."
             onClick={goToCodeQr}
-          />
+          /> */}
         </div>
       </div>
     </div>
