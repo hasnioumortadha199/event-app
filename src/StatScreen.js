@@ -14,7 +14,7 @@ export default function StatScreen() {
       .then((snap) => {
         const totalUsers = snap.docs.length;
         const totalNote = snap.docs.reduce(
-          (sum, user) => sum + (user.data().notePostTest || 0),
+          (sum, user) => sum + (user.data().notePreTest || 0),
           0
         );
         const maxScore = 41;
@@ -29,7 +29,7 @@ export default function StatScreen() {
     const fetchUsers = async () => {
       try {
         const querySnapshot = await getDocs(
-          query(collection(db, "users"), orderBy("notePostTest", "desc"))
+          query(collection(db, "users"), orderBy("notePreTest", "desc"))
         );
         const results = querySnapshot.docs.map((doc) => ({
           id: doc.id,
@@ -87,7 +87,7 @@ export default function StatScreen() {
                 >
                   <td className="py-3 px-4">{index + 1}</td>
                   <td className="py-3 px-4">{user.username}</td>
-                  <td className="py-3 px-4">{user.notePostTest} / 39</td>
+                  <td className="py-3 px-4">{user.notePreTest} / 39</td>
                   <td className="py-3 px-4">{user.email}</td>
                 </tr>
               ))}

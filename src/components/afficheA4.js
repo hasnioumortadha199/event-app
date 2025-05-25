@@ -6,15 +6,11 @@ export default function A4PageTailwind() {
       <div
         className="bg-white shadow border overflow-hidden print:shadow-none print:border-none"
         style={{
-          width: "794px", // A4 width in pixels
-          height: "1123px", // A4 height in pixels
+          width: "794px",  
+          height: "1123px",  
         }}
       >
-        <img
-          src="affiche.png" // replace with your image path or URL
-          alt="A4 format"
-          className="w-full h-full object-contain"
-        />
+        <h1>pas encore</h1>
       </div>
     </div>
   );
