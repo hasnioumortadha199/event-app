@@ -15,6 +15,7 @@ import CombinedDigrammeScreens from "./CombineDigramme";
 import QRCodeGenerator from "./components/qrcode";
 import CreativeWorldRedirect from "./components/redirectcw";
 import A4ImagePage from "./components/afficheA4";
+import Evalution from "./components/evalution";
  
 
 function App() {
@@ -29,6 +30,8 @@ function App() {
           <Route path="/affiche" element={<A4ImagePage />} />
         <Route path="/notification" element={<NotificationPage />} />
         <Route path="/review" element={<ReviewPage />} />
+                <Route path="/eveluation" element={<Evalution />} />
+
         <Route path="/reviewprof/:day" element={< ReviewDayProf />} />
         <Route path="/review/:day" element={<ReviewDayPage />} />
         <Route path="/codeqr" element={<QRCodeGenerator />} />
