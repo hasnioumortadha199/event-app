@@ -22,11 +22,11 @@ export default function Home() {
         </h1>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <Card
+          {/* <Card
             title="Gestion"
             description="Section de Pretest et Post-test."
             onClick={goToManagement}
-          />
+          /> */}
           <Card
             title="Chat"
             description="Discutez et répondez aux messages."
