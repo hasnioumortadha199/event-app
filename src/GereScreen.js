@@ -10,7 +10,7 @@ import Navbar from "./components/Navbar";
 import StatScreen from "./StatCyrcle";
 import StatCycleScreen from "./StatCyrcle";
 export default function GereScreen() {
-  const [initialSeconds, setInitialSeconds] = useState(5);
+  const [initialSeconds, setInitialSeconds] = useState(15);
   const [remainingSeconds, setRemainingSeconds] = useState(initialSeconds);
   const intervalIdRef = useRef(null);
   const [globalData, setGlobalData] = useState(0);
