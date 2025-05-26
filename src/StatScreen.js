@@ -17,7 +17,7 @@ export default function StatScreen() {
           (sum, user) => sum + (user.data().notePreTest || 0),
           0
         );
-        const maxScore = 41;
+        const maxScore = 48;
         setAverageNote(((totalNote * 100) / (maxScore * totalUsers)).toFixed(2));
       })
       .catch((error) => {
@@ -87,7 +87,7 @@ export default function StatScreen() {
                 >
                   <td className="py-3 px-4">{index + 1}</td>
                   <td className="py-3 px-4">{user.username}</td>
-                  <td className="py-3 px-4">{user.notePreTest} / 39</td>
+                  <td className="py-3 px-4">{user.notePreTest} / 48</td>
                   <td className="py-3 px-4">{user.email}</td>
                 </tr>
               ))}

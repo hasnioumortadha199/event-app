@@ -37,11 +37,11 @@ export default function Home() {
             description="Consultez vos données et performances."
             onClick={goToStatistics}
           />
-          <Card
+          {/* <Card
             title="Révision"
             description="Revenez sur les tests et donnez votre avis."
             onClick={goToReview}
-          />
+          /> */}
           <Card
             title="Notification"
             description="Ajoutez, éditez ou supprimez les notifications."
