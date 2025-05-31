@@ -84,8 +84,13 @@ export default function DigrammeScreenTwo() {
         <canvas id="myChart" width="400" height="400"></canvas>
       </div>
       <div className="mt-5 text-center">
-          <p className="text-2xl">Total Correct: {totalCorrect} ({correctPercentage}%)</p>
-          <p className="text-2xl"> Total False: {totalFalse} ({falsePercentage}%)</p>
+          <p className="text-2xl">
+            Total Correct:
+             {/* {totalCorrect}  */}
+             {correctPercentage}%</p>
+          <p className="text-2xl"> Total False:
+             {/* {totalFalse}  */}
+             {falsePercentage}%</p>
         </div>
     </div>
   );
