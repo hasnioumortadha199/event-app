@@ -30,7 +30,7 @@ export default function StatFonc({ item }) {
   const getAnswers = (users) => {
     // .reduce((partialSum, a) => partialSum + a, 0);
     users.reduce(
-      (pqrSum, user) => pqrSum + user.preNoteQues[globalData.index].note,
+      (pqrSum, user) => pqrSum + user.postNoteQues[globalData.index].note,
       0
     );
   };

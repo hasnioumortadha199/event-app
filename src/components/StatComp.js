@@ -38,8 +38,8 @@ export default function StatComp() {
       let lsum = usersSnap.docs.reduce((partialSum, user) => {
         try {
           let userData = user.data();
-          if (userData.preNoteQues) {
-            let userResponse = userData.preNoteQues.filter(
+          if (userData.postNoteQues) {
+            let userResponse = userData.postNoteQues.filter(
               (note) => note.index == globalData.index
             );
             if (userResponse.length == 1) {
@@ -57,6 +57,36 @@ export default function StatComp() {
       setSum(lsum);
     });
   }, [globalData]);
+
+
+
+//   useEffect(() => {
+//   getDocs(usersQuery).then((usersSnap) => {
+//     let validResponses = 0;
+//     let lsum = usersSnap.docs.reduce((partialSum, user) => {
+//       try {
+//         let userData = user.data();
+//         if (userData.postNoteQues) {
+//           let userResponse = userData.postNoteQues.find(
+//             (note) => note.index == globalData.index
+//           );
+//           if (userResponse) {
+//             validResponses++;
+//             return partialSum + userResponse.note;
+//           }
+//         }
+//         return partialSum;
+//       } catch (err) {
+//         return partialSum;
+//       }
+//     }, 0);
+
+//     setNbr(validResponses);  
+//     setSum(lsum);
+//   });
+// }, [globalData]);
+
+
 
   return (
     <div>
